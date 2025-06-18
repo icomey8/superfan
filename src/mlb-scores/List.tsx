@@ -2,7 +2,7 @@ import { List } from "@raycast/api";
 import MLBScoresDetail from "./ListDetail";
 import useMLBScores from "../hooks/useMLBScores";
 
-export default function ScoreList() {
+export default function ScoresList() {
   const { data: scores } = useMLBScores();
 
   return (

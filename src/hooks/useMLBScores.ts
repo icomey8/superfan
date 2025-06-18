@@ -5,7 +5,7 @@ export default function useMLBScores() {
   const { data, isLoading, error } = useQuery<Root>({
     queryKey: ["mlb-scores"],
     queryFn: async (): Promise<Root> => {
-      const apiUrl = process.env.MLB_SCORES_API_URL;
+      const apiUrl = "http://site.api.espn.com/apis/site/v2/sports/baseball/mlb/scoreboard";
       if (!apiUrl) {
         throw new Error("MLB_SCORES_API_URL is not defined in environment variables");
       }

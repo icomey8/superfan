@@ -62,7 +62,7 @@ export interface Event {
   shortName: string;
   season: Season3;
   competitions: Competition[];
-  links: Link11[];
+  links: Link10[];
   status: Status2;
   weather?: Weather;
 }
@@ -77,7 +77,6 @@ export interface Competition {
   id: string;
   uid: string;
   date: string;
-  endDate?: string;
   attendance: number;
   type: Type2;
   timeValid: boolean;
@@ -91,7 +90,7 @@ export interface Competition {
   notes: [];
   status: Status;
   broadcasts: Broadcast[];
-  leaders?: Leader3[];
+  leaders: Leader3[];
   format: Format;
   startDate: string;
   broadcast: string;
@@ -100,8 +99,6 @@ export interface Competition {
   headlines?: Headline[];
   situation?: Situation;
   outsText?: string;
-  tickets?: Ticket[];
-  odds?: Odd[];
 }
 
 export interface Type2 {
@@ -130,7 +127,7 @@ export interface Competitor {
   winner?: boolean;
   team: Team;
   score: string;
-  linescores?: Linescore[];
+  linescores: Linescore[];
   statistics: Statistic[];
   leaders: Leader[];
   probables: Probable[];
@@ -172,7 +169,6 @@ export interface Statistic {
   name: string;
   abbreviation: string;
   displayValue: string;
-  rankDisplayValue?: string;
 }
 
 export interface Leader {
@@ -196,7 +192,7 @@ export interface Athlete {
   displayName: string;
   shortName: string;
   links: Link2[];
-  headshot?: string;
+  headshot: string;
   jersey: string;
   position: Position;
   team: Team2;
@@ -237,7 +233,7 @@ export interface Athlete2 {
   displayName: string;
   shortName: string;
   links: Link3[];
-  headshot?: string;
+  headshot: string;
   jersey: string;
   position: string;
   team: Team4;
@@ -282,7 +278,6 @@ export interface Type3 {
   description: string;
   detail: string;
   shortDetail: string;
-  altDetail?: string;
 }
 
 export interface FeaturedAthlete {
@@ -456,7 +451,7 @@ export interface Web {
 
 export interface Self {
   href: string;
-  dsi: Dsi;
+  dsi?: Dsi;
 }
 
 export interface Dsi {
@@ -530,6 +525,7 @@ export interface Hls {
   href: string;
   HD: Hd;
   cmaf: Cmaf;
+  "9x16"?: N9x162;
 }
 
 export interface Hd {
@@ -547,6 +543,10 @@ export interface Shield {
 }
 
 export interface N9x16 {
+  href: string;
+}
+
+export interface N9x162 {
   href: string;
 }
 
@@ -628,7 +628,7 @@ export interface Web2 {
 
 export interface Self3 {
   href: string;
-  dsi: Dsi2;
+  dsi?: Dsi2;
 }
 
 export interface Dsi2 {
@@ -702,6 +702,7 @@ export interface Hls2 {
   href: string;
   HD: Hd3;
   cmaf: Cmaf2;
+  "9x16": N9x164;
 }
 
 export interface Hd3 {
@@ -710,15 +711,19 @@ export interface Hd3 {
 
 export interface Cmaf2 {
   href: string;
+  "9x16": N9x163;
   shield: Shield2;
-  "9x16"?: N9x162;
+}
+
+export interface N9x163 {
+  href: string;
 }
 
 export interface Shield2 {
   href: string;
 }
 
-export interface N9x162 {
+export interface N9x164 {
   href: string;
 }
 
@@ -739,10 +744,10 @@ export interface Situation {
   balls: number;
   strikes: number;
   outs: number;
-  onSecond: boolean;
   pitcher?: Pitcher;
   batter?: Batter;
   onFirst: boolean;
+  onSecond: boolean;
   onThird: boolean;
   dueUp?: DueUp[];
 }
@@ -876,160 +881,7 @@ export interface Team13 {
   id: string;
 }
 
-export interface Ticket {
-  summary: string;
-  numberAvailable: number;
-  links: Link10[];
-}
-
 export interface Link10 {
-  href: string;
-}
-
-export interface Odd {
-  provider: Provider;
-  details: string;
-  overUnder: number;
-  spread: number;
-  awayTeamOdds: AwayTeamOdds;
-  homeTeamOdds: HomeTeamOdds;
-  open: Open;
-  current: Current;
-}
-
-export interface Provider {
-  id: string;
-  name: string;
-  priority: number;
-}
-
-export interface AwayTeamOdds {
-  favorite: boolean;
-  underdog: boolean;
-  close: Close;
-  team: Team14;
-}
-
-export interface Close {
-  pointSpread: PointSpread;
-}
-
-export interface PointSpread {
-  alternateDisplayValue: string;
-  american: string;
-}
-
-export interface Team14 {
-  id: string;
-  uid: string;
-  abbreviation: string;
-  name: string;
-  displayName: string;
-  logo: string;
-}
-
-export interface HomeTeamOdds {
-  favorite: boolean;
-  underdog: boolean;
-  close: Close2;
-  team: Team15;
-}
-
-export interface Close2 {
-  pointSpread: PointSpread2;
-}
-
-export interface PointSpread2 {
-  value: number;
-  alternateDisplayValue: string;
-  decimal: number;
-  american: string;
-}
-
-export interface Team15 {
-  id: string;
-  uid: string;
-  abbreviation: string;
-  name: string;
-  displayName: string;
-  logo: string;
-}
-
-export interface Open {
-  over?: Over;
-  under: Under;
-  total: Total;
-}
-
-export interface Over {
-  value: number;
-  displayValue: string;
-  alternateDisplayValue: string;
-  decimal: number;
-  fraction: string;
-  american: string;
-}
-
-export interface Under {
-  value: number;
-  displayValue: string;
-  alternateDisplayValue: string;
-  decimal: number;
-  fraction: string;
-  american: string;
-}
-
-export interface Total {
-  value: number;
-  displayValue?: string;
-  alternateDisplayValue: string;
-  decimal: number;
-  fraction?: string;
-  american: string;
-}
-
-export interface Current {
-  over: Over2;
-  under: Under2;
-  total: Total2;
-}
-
-export interface Over2 {
-  value: number;
-  displayValue: string;
-  alternateDisplayValue: string;
-  decimal: number;
-  fraction: string;
-  american: string;
-  outcome: Outcome;
-}
-
-export interface Outcome {
-  type: string;
-}
-
-export interface Under2 {
-  value: number;
-  displayValue: string;
-  alternateDisplayValue: string;
-  decimal: number;
-  fraction: string;
-  american: string;
-  outcome: Outcome2;
-}
-
-export interface Outcome2 {
-  type: string;
-}
-
-export interface Total2 {
-  value: number;
-  alternateDisplayValue: string;
-  decimal: number;
-  american: string;
-}
-
-export interface Link11 {
   language: string;
   rel: string[];
   href: string;
@@ -1054,7 +906,6 @@ export interface Type6 {
   description: string;
   detail: string;
   shortDetail: string;
-  altDetail?: string;
 }
 
 export interface Weather {
@@ -1062,10 +913,10 @@ export interface Weather {
   temperature: number;
   highTemperature: number;
   conditionId: string;
-  link: Link12;
+  link: Link11;
 }
 
-export interface Link12 {
+export interface Link11 {
   language: string;
   rel: string[];
   href: string;

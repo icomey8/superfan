@@ -10,13 +10,19 @@
     {
       "name": "search-mlb-scores",
       "title": "Search MLB Scores",
-      "description": "",
+      "description": "View and search for current MLB games.",
       "mode": "view"
     },
     {
       "name": "search-nba-scores",
       "title": "Search NBA Scores",
       "description": "View and search for current NBA games.",
+      "mode": "view"
+    },
+    {
+      "name": "view-mlb-standings",
+      "title": "View MLB Standings",
+      "description": "Displays live standings for AL/NL Teams.",
       "mode": "view"
     }
   ],
