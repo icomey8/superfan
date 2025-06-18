@@ -1,11 +1,11 @@
 # Superfan
 
-View the scores and standings for your favorite teams and sports.
+View the scores for your favorite teams and sports.
 
 
 ## Features 
 - Search by league
-- View live in-game updates with a single command
+- View live in-game updates and details all within the Raycast menu.
 
 
 ## To-Do
