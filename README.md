@@ -10,7 +10,7 @@ View the scores for your favorite teams and sports.
 
 ## To-Do
 - [x] Set up MLB commands
-- [ ] Set up NBA commands
+- [x] Set up NBA commands
 - [ ] Set up NFL commands
 - [ ] Set up CFB commands
 - [ ] Esports Support
