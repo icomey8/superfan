@@ -18,12 +18,6 @@
       "title": "Search NBA Scores",
       "description": "View and search for current NBA games.",
       "mode": "view"
-    },
-    {
-      "name": "view-mlb-standings",
-      "title": "View MLB Standings",
-      "description": "Displays live standings for AL/NL Teams.",
-      "mode": "view"
     }
   ],
   "dependencies": {

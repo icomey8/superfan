@@ -1,22 +1,12 @@
-import { useQuery } from "@tanstack/react-query";
-import { Root } from "../types/mlb-scores";
+import { Root } from "../types/mlb-scores-raw";
+import { useFetch } from "@raycast/utils";
+import { cleanRawMlbScores } from "../utils/mlb-data-mapper";
 
 export default function useMLBScores() {
-  const { data, isLoading, error } = useQuery<Root>({
-    queryKey: ["mlb-scores"],
-    queryFn: async (): Promise<Root> => {
-      const apiUrl = "http://site.api.espn.com/apis/site/v2/sports/baseball/mlb/scoreboard";
-      if (!apiUrl) {
-        throw new Error("MLB_SCORES_API_URL is not defined in environment variables");
-      }
-      const scores = await fetch(apiUrl);
-      if (!scores.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const json = await scores.json();
-      return json as Root;
-    },
-  });
+  const { isLoading, data, revalidate } = useFetch<Root>(
+    "http://site.api.espn.com/apis/site/v2/sports/baseball/mlb/scoreboard",
+  );
+  const gameData = cleanRawMlbScores(data);
 
-  return { data, isLoading, error };
+  return { isLoading, data, gameData, revalidate };
 }

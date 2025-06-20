@@ -1,12 +1,5 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ScoresList from "./mlb-scores/List";
 
-const queryClient = new QueryClient();
-
 export default function Command() {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <ScoresList />
-    </QueryClientProvider>
-  );
+  return <ScoresList />;
 }

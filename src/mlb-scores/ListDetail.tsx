@@ -1,9 +1,9 @@
 import { List } from "@raycast/api";
-import { Competitor, Situation } from "../types/mlb-scores";
+import { MLBTeam, Situation } from "../types/mlb-scores";
 
 type GameDetails = {
-  home: Competitor;
-  away: Competitor;
+  home: MLBTeam;
+  away: MLBTeam;
   liveAtBat: Situation | undefined;
 };
 
@@ -23,15 +23,15 @@ export default function MLBScoresDetail({ home, away, liveAtBat }: GameDetails) 
         <List.Item.Detail.Metadata>
           <List.Item.Detail.Metadata.Label
             title="Pitcher"
-            icon={liveAtBat?.pitcher?.athlete.headshot}
-            text={liveAtBat?.pitcher?.athlete.shortName}
+            icon={liveAtBat?.pitcher?.headshot}
+            text={liveAtBat?.pitcher?.shortName}
           />
           <List.Item.Detail.Metadata.Label
             title="Batter"
-            icon={liveAtBat?.batter?.athlete.headshot}
-            text={liveAtBat?.batter?.athlete.shortName}
+            icon={liveAtBat?.batter?.headshot}
+            text={liveAtBat?.batter?.shortName}
           />
-          <List.Item.Detail.Metadata.Label title="Last Play" text={liveAtBat?.lastPlay.text} />
+          <List.Item.Detail.Metadata.Label title="Last Play" text={liveAtBat?.lastPlay} />
           <List.Item.Detail.Metadata.Separator />
           <List.Item.Detail.Metadata.TagList title="Bases">
             {noBases && <List.Item.Detail.Metadata.TagList.Item text="None" color={"#d2d1d0"} />}
@@ -49,23 +49,15 @@ export default function MLBScoresDetail({ home, away, liveAtBat }: GameDetails) 
           </List.Item.Detail.Metadata.TagList>
           <List.Item.Detail.Metadata.Label title="Outs" text={filled.repeat(outs) + empty.repeat(3 - outs)} />
           <List.Item.Detail.Metadata.Separator />
-          <List.Item.Detail.Metadata.Label
-            icon={home.team.logo}
-            title="Home Team"
-            text={`${home.team.displayName} (${home.records[0].summary})`}
-          />
-          <List.Item.Detail.Metadata.Label
-            icon={away.team.logo}
-            title="Away Team"
-            text={`${away.team.displayName} (${away.records[0].summary})`}
-          />
+          <List.Item.Detail.Metadata.Label icon={home.logo} title="Home Team" text={`${home.name} (${home.record})`} />
+          <List.Item.Detail.Metadata.Label icon={away.logo} title="Away Team" text={`${away.name} (${away.record})`} />
           <List.Item.Detail.Metadata.Label
             title="Hits"
-            text={`${home.team.abbreviation}: ${home.hits}  ${away.team.abbreviation}: ${away.hits}`}
+            text={`${home.shortName}: ${home.stats.hits}  ${away.shortName}: ${away.stats.hits}`}
           />
           <List.Item.Detail.Metadata.Label
             title="Errors"
-            text={`${home.team.abbreviation}: ${home.errors} ${away.team.abbreviation}: ${away.errors}`}
+            text={`${home.shortName}: ${home.stats.errors} ${away.shortName}: ${away.stats.errors}`}
           />
         </List.Item.Detail.Metadata>
       }

@@ -1,18 +1,39 @@
 import { List } from "@raycast/api";
-// import ListDetail from "./ListDetail";
+import ListDetail from "./ListDetail";
+import useNBAScores from "../hooks/useNBAScores";
 
 export default function ScoreList() {
+  const { gameData } = useNBAScores();
+
   return (
     <List navigationTitle="NBA Scores" filtering={true} searchBarPlaceholder="Filter by team name..." isShowingDetail>
       <List.Section title="Ongoing Games">
-        <List.Item title="IND 56, OKC 52" />
+        {gameData
+          .filter((games) => games.status.state == "in")
+          .map((game) => {
+            return (
+              <List.Item
+                title={`${game.homeTeam.abbreviation} ${game.homeTeam.stats.score}, ${game.awayTeam.abbreviation} ${game.awayTeam.stats.score}`}
+                accessories={[{ text: game.status.description }]}
+                detail={<ListDetail homeTeam={game.homeTeam} awayTeam={game.awayTeam} lastPlay={game.lastPlay} />}
+              />
+            );
+          })}
       </List.Section>
       <List.Section title="Finished Games">
-        <List.Item title="No finished games" />
+        {gameData
+          .filter((games) => games.status.state == "post")
+          .map((game) => {
+            return (
+              <List.Item
+                title={`${game.homeTeam.abbreviation} ${game.homeTeam.stats.score}, ${game.awayTeam.abbreviation} ${game.awayTeam.stats.score}`}
+                accessories={[{ text: game.status.description }]}
+                detail={<ListDetail homeTeam={game.homeTeam} awayTeam={game.awayTeam} lastPlay={game.lastPlay} />}
+              />
+            );
+          })}
       </List.Section>
-      <List.Section title="Upcoming Games">
-        <List.Item title="No upcoming games" />
-      </List.Section>
+      <List.Section title="Upcoming Games"></List.Section>
     </List>
   );
 }
