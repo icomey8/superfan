@@ -1,6 +1,8 @@
 # Superfan
 
-View the scores for your favorite teams and sports.
+View the scores and live in-game details about your favorite teams and sports.
+
+![Superfan Screenshot](https://github.com/icomey8/superfan/blob/main/metadata/superfan-1.png)
 
 
 ## Features 
@@ -14,8 +16,6 @@ View the scores for your favorite teams and sports.
 - [ ] Set up NFL commands
 - [ ] Set up CFB commands
 - [ ] Esports Support
-
-## Screenshots
 
 
 ## Disclaimer
