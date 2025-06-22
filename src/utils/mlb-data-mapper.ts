@@ -13,6 +13,7 @@ function mapCompetitorToMLBTeam(c: Competitor): MLBTeam {
       hits: c.hits ?? 0,
       errors: c.errors ?? 0,
     },
+    winner: c.winner,
   };
 }
 
@@ -60,6 +61,7 @@ function mapEventToGame(event: Event): Game | null {
       onSecond: situation?.onSecond ?? false,
       onThird: situation?.onThird ?? false,
     },
+    link: event.links[0].href,
   };
 }
 

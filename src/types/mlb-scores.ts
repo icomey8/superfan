@@ -7,6 +7,7 @@ export interface Game {
     inning: string;
   };
   situation: Situation;
+  link: string;
 }
 
 export type Situation = {
@@ -33,6 +34,7 @@ export type Team = {
   shortName: string;
   logo: string;
   record: string;
+  winner?: boolean;
 };
 
 export interface MLBTeam extends Team {

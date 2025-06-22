@@ -1,9 +1,12 @@
 import { List } from "@raycast/api";
 import MLBScoresDetail from "./ListDetail";
 import useMLBScores from "../hooks/useMLBScores";
+import FinishedGame from "../mlb-scores/FinishedGame";
+import { fetchAllLogos } from "../hooks/useMLBScores";
 
 export default function ScoresList() {
   const { gameData } = useMLBScores();
+  fetchAllLogos();
 
   return (
     <List navigationTitle="MLB Scores" filtering={true} searchBarPlaceholder="Filter by team name..." isShowingDetail>
@@ -30,7 +33,7 @@ export default function ScoresList() {
                 key={game.id}
                 title={`${game.homeTeam.name} ${game.homeTeam.stats.runs}, ${game.awayTeam.name} ${game.awayTeam.stats.runs}`}
                 accessories={[{ text: game.status.inning, tooltip: "Inning" }]}
-                detail={<MLBScoresDetail home={game.homeTeam} away={game.awayTeam} liveAtBat={game.situation} />}
+                detail={<FinishedGame home={game.homeTeam} away={game.awayTeam} link={game.link} />}
               />
             );
           })}
