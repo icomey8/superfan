@@ -29,8 +29,8 @@ export default function ListDetail({ homeTeam, awayTeam, lastPlay }: GameDetails
             text={`${homeTeam.abbreviation} ${homeTeam.stats.fieldGoalPct}%, ${awayTeam.abbreviation} ${awayTeam.stats.fieldGoalPct}%`}
           />
           <List.Item.Detail.Metadata.Label
-            title="FG%"
-            text={`${homeTeam.abbreviation} ${homeTeam.stats.fieldGoalPct}%, ${awayTeam.abbreviation} ${awayTeam.stats.fieldGoalPct}%`}
+            title="FT%"
+            text={`${homeTeam.abbreviation} ${homeTeam.stats.freeThrowPct}%, ${awayTeam.abbreviation} ${awayTeam.stats.freeThrowPct}%`}
           />
           <List.Item.Detail.Metadata.Label
             title="3P%"
@@ -38,11 +38,11 @@ export default function ListDetail({ homeTeam, awayTeam, lastPlay }: GameDetails
           />
           <List.Item.Detail.Metadata.Label
             title="REB"
-            text={`${homeTeam.abbreviation} ${homeTeam.stats.teamRebounds}%, ${awayTeam.abbreviation} ${awayTeam.stats.teamRebounds}%`}
+            text={`${homeTeam.abbreviation} ${homeTeam.stats.teamRebounds}, ${awayTeam.abbreviation} ${awayTeam.stats.teamRebounds}`}
           />
           <List.Item.Detail.Metadata.Label
             title="AST"
-            text={`${homeTeam.abbreviation} ${homeTeam.stats.teamAssists}%, ${awayTeam.abbreviation} ${awayTeam.stats.teamAssists}%`}
+            text={`${homeTeam.abbreviation} ${homeTeam.stats.teamAssists}, ${awayTeam.abbreviation} ${awayTeam.stats.teamAssists}`}
           />
         </List.Item.Detail.Metadata>
       }

@@ -29,6 +29,7 @@ export interface NBATeam extends Team {
     score: string;
     fieldGoalPct: string;
     threePointPct: string;
+    freeThrowPct: string;
     teamRebounds: string;
     teamAssists: string;
   };
@@ -37,5 +38,3 @@ export interface NBATeam extends Team {
     rebounds: PlayerTotal;
   };
 }
-
-// things to add: player headshot, more stats (FT, TO)

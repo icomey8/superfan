@@ -11,11 +11,10 @@ export async function fetchAllLogos() {
   const fetchPromises = teamIds.map(async (id) => {
     const response = await fetch(`http://site.api.espn.com/apis/site/v2/sports/baseball/mlb/teams/${id}`);
     const data: RootTwo = await response.json();
-    // console.log(data.team.logos[0].href);
-    logoCache.set(id, data?.team.logos[1]?.href); // Cache the logo
+    logoCache.set(id, data?.team.logos[1]?.href);
   });
 
-  await Promise.all(fetchPromises); // Wait for all requests to complete
+  await Promise.all(fetchPromises);
 }
 
 export default function useMLBScores() {

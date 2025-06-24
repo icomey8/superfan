@@ -2,8 +2,6 @@ import { Root, Event, Competitor } from "../types/nba-scores-raw";
 import { Game, NBATeam } from "../types/nba-scores";
 
 function mapCompetitorToNBATeam(c: Competitor): NBATeam {
-  //   console.log(c.leaders[0].leaders[0].athlete);
-  //   console.log(c.leaders[1].leaders[0].athlete);
   return {
     id: c.team.id,
     name: c.team.name,
@@ -13,8 +11,9 @@ function mapCompetitorToNBATeam(c: Competitor): NBATeam {
     record: c.records?.[0]?.summary ?? "0-0",
     stats: {
       score: c.score ?? "0",
-      fieldGoalPct: c.statistics[10].displayValue ?? "0",
-      threePointPct: c.statistics[5].displayValue ?? "0",
+      fieldGoalPct: c.statistics[5].displayValue ?? "0",
+      threePointPct: c.statistics[10].displayValue ?? "0",
+      freeThrowPct: c.statistics[6].displayValue ?? "0",
       teamRebounds: c.statistics[0].displayValue ?? "0",
       teamAssists: c.statistics[2].displayValue ?? "0",
     },
@@ -46,9 +45,6 @@ function mapEventToGame(event: Event): Game | null {
 
   const homeTeam = mapCompetitorToNBATeam(homeCompetitor);
   const awayTeam = mapCompetitorToNBATeam(awayCompetitor);
-
-  console.log(competition.situation);
-  //   const situation = competition.situation;
 
   return {
     id: competition.id,

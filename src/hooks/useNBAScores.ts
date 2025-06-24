@@ -6,9 +6,7 @@ export default function useNBAScores() {
   const { isLoading, data, revalidate } = useFetch<Root>(
     "http://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard",
   );
-  //   console.log(data);
   const gameData = cleanRawNBAScores(data);
-  //   console.log(gameData);
 
   return { isLoading, data, gameData, revalidate };
 }
