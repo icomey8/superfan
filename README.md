@@ -13,7 +13,7 @@ View the scores and live in-game details about your favorite teams and sports.
 ## To-Do
 - [x] Set up MLB commands
 - [x] Set up NBA commands
-- [ ] Esports Support
+- [ ] Esports Support (in-progress)
 - [ ] Set up NFL commands
 - [ ] Set up CFB commands
 
